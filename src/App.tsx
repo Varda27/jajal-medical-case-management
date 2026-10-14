@@ -32,7 +32,8 @@ import {
   Copy,
   Check,
   RefreshCw,
-  Info
+  Info,
+  Download
 } from 'lucide-react';
 
 // --- Type Definitions ---
@@ -928,6 +929,14 @@ export default function App() {
 
           {/* User Profile & Role Switcher */}
           <div className="flex items-center gap-3">
+            <a
+              href="/jajal-medical-case-management.zip"
+              download="jajal-medical-case-management.zip"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-sm transition-colors"
+              title="Download entire codebase as a .zip file"
+            >
+              <Download className="w-3.5 h-3.5" /> Download ZIP
+            </a>
             {currentUser ? (
               <div className="flex items-center gap-3">
                 {/* Instant Role Toggle Pill */}
@@ -2065,11 +2074,20 @@ export default function App() {
             {/* VIEW 7: ARCHITECTURE, ER DIAGRAM & DOCS */}
             {activeTab === 'docs' && (
               <div className="space-y-6 max-w-4xl mx-auto">
-                <div className="pb-3 border-b border-slate-200">
-                  <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                    <Database className="w-6 h-6 text-sky-600" /> Database Architecture & Traceability
-                  </h1>
-                  <p className="text-sm text-slate-500">Entity Relationship specifications and requirements traceability</p>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                  <div>
+                    <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                      <Database className="w-6 h-6 text-sky-600" /> Database Architecture & Traceability
+                    </h1>
+                    <p className="text-sm text-slate-500">Entity Relationship specifications, requirements traceability, and export</p>
+                  </div>
+                  <a
+                    href="/jajal-medical-case-management.zip"
+                    download="jajal-medical-case-management.zip"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm transition-colors"
+                  >
+                    <Download className="w-4 h-4" /> Download Complete ZIP
+                  </a>
                 </div>
 
                 {/* ER Diagram Card */}
