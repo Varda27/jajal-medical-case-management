@@ -32,8 +32,7 @@ import {
   Copy,
   Check,
   RefreshCw,
-  Info,
-  Download
+  Info
 } from 'lucide-react';
 
 // --- Type Definitions ---
@@ -928,15 +927,7 @@ export default function App() {
           </div>
 
           {/* User Profile & Role Switcher */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href="/jajal-medical-case-management.zip"
-              download="jajal-medical-case-management.zip"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition-colors border border-emerald-400/30"
-              title="Download entire codebase as a .zip file"
-            >
-              <Download className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Download</span> ZIP
-            </a>
+          <div className="flex items-center gap-3">
             {currentUser ? (
               <div className="flex items-center gap-3">
                 {/* Instant Role Toggle Pill */}
@@ -1070,14 +1061,7 @@ export default function App() {
                     <h1 className="text-2xl font-bold text-slate-900">Clinical Operations Dashboard</h1>
                     <p className="text-sm text-slate-500">Live implant pipeline metrics aggregated dynamically from MySQL</p>
                   </div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <a
-                      href="/jajal-medical-case-management.zip"
-                      download="jajal-medical-case-management.zip"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-sm transition-colors border border-emerald-500"
-                    >
-                      <Download className="w-4 h-4" /> Download Code (.ZIP)
-                    </a>
+                  <div className="flex items-center gap-2">
                     {currentUser.role === 'admin' && (
                       <button
                         onClick={openCreateForm}
@@ -1093,28 +1077,6 @@ export default function App() {
                       <FileText className="w-4 h-4" /> View All Cases
                     </button>
                   </div>
-                </div>
-
-                {/* Direct Download Callout Banner */}
-                <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-4 sm:p-5 rounded-xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 bg-white/20 rounded-xl">
-                      <Download className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h2 className="font-bold text-sm sm:text-base leading-snug">Download Complete Project: jajal-medical-case-management.zip</h2>
-                      <p className="text-xs text-emerald-100 mt-0.5">
-                        Contains the complete Laravel 11 application, MySQL migrations, seeders, Sanctum API, PHPUnit feature tests, Blade views, and documentation.
-                      </p>
-                    </div>
-                  </div>
-                  <a
-                    href="/jajal-medical-case-management.zip"
-                    download="jajal-medical-case-management.zip"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-white text-emerald-800 hover:bg-emerald-50 text-xs sm:text-sm font-bold shadow-md transition-all shrink-0 w-full sm:w-auto"
-                  >
-                    <Download className="w-4 h-4" /> Download ZIP Now
-                  </a>
                 </div>
 
                 {/* 6 Dynamic Summary Cards */}
@@ -2103,20 +2065,11 @@ export default function App() {
             {/* VIEW 7: ARCHITECTURE, ER DIAGRAM & DOCS */}
             {activeTab === 'docs' && (
               <div className="space-y-6 max-w-4xl mx-auto">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
-                  <div>
-                    <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                      <Database className="w-6 h-6 text-sky-600" /> Database Architecture & Traceability
-                    </h1>
-                    <p className="text-sm text-slate-500">Entity Relationship specifications, requirements traceability, and export</p>
-                  </div>
-                  <a
-                    href="/jajal-medical-case-management.zip"
-                    download="jajal-medical-case-management.zip"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm transition-colors"
-                  >
-                    <Download className="w-4 h-4" /> Download Complete ZIP
-                  </a>
+                <div className="pb-3 border-b border-slate-200">
+                  <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                    <Database className="w-6 h-6 text-sky-600" /> Database Architecture & Traceability
+                  </h1>
+                  <p className="text-sm text-slate-500">Entity Relationship specifications and requirements traceability</p>
                 </div>
 
                 {/* ER Diagram Card */}
