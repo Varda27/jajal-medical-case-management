@@ -32,8 +32,152 @@ import {
   Copy,
   Check,
   RefreshCw,
-  Info
+  Info,
+  Palette,
+  Sparkles
 } from 'lucide-react';
+
+// --- Theme Customization System ---
+export type ColorTheme = 'sapphire' | 'amethyst' | 'crimson' | 'emerald';
+
+export interface ThemeConfig {
+  id: ColorTheme;
+  name: string;
+  dotColor: string;
+  headerBg: string;
+  headerBorder: string;
+  logoBg: string;
+  logoIcon: string;
+  logoAccent: string;
+  logoTag: string;
+  navActive: string;
+  navInactive: string;
+  primaryBtn: string;
+  primaryBtnText: string;
+  roleActiveAdmin: string;
+  roleActiveViewer: string;
+  highlightText: string;
+  hoverRow: string;
+  totalCardBorder: string;
+  totalCardText: string;
+  totalCardSub: string;
+  focusRing: string;
+  bannerBg: string;
+  bannerBorder: string;
+  bannerAccent: string;
+  bannerBtn: string;
+}
+
+export const THEMES: Record<ColorTheme, ThemeConfig> = {
+  sapphire: {
+    id: 'sapphire',
+    name: 'Royal Sapphire',
+    dotColor: 'bg-blue-500',
+    headerBg: 'bg-gradient-to-r from-[#060e22] via-[#0b1b44] to-[#12285a]',
+    headerBorder: 'border-blue-500',
+    logoBg: 'bg-blue-500/20 text-blue-300 border-blue-400/40',
+    logoIcon: 'text-blue-400',
+    logoAccent: 'text-sky-400',
+    logoTag: 'bg-blue-900/60 border-blue-700/60 text-blue-200',
+    navActive: 'bg-blue-600 text-white shadow-sm',
+    navInactive: 'text-blue-100/70 hover:text-white hover:bg-blue-900/50',
+    primaryBtn: 'bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-sm shadow-blue-500/25',
+    primaryBtnText: 'text-blue-600',
+    roleActiveAdmin: 'bg-blue-600 text-white shadow-sm',
+    roleActiveViewer: 'bg-sky-600 text-white shadow-sm',
+    highlightText: 'text-blue-600 hover:text-blue-800',
+    hoverRow: 'hover:bg-blue-50/40',
+    totalCardBorder: 'border-l-blue-600',
+    totalCardText: 'text-blue-950',
+    totalCardSub: 'text-blue-600',
+    focusRing: 'focus:ring-blue-500',
+    bannerBg: 'bg-gradient-to-r from-[#060e22] via-[#0b1b44] to-[#12285a]',
+    bannerBorder: 'border-blue-800/80',
+    bannerAccent: 'text-sky-400',
+    bannerBtn: 'bg-blue-600 hover:bg-blue-500 text-white'
+  },
+  amethyst: {
+    id: 'amethyst',
+    name: 'Amethyst Biotech',
+    dotColor: 'bg-purple-500',
+    headerBg: 'bg-gradient-to-r from-[#140624] via-[#240a3e] to-[#390d63]',
+    headerBorder: 'border-purple-500',
+    logoBg: 'bg-purple-500/20 text-purple-300 border-purple-400/40',
+    logoIcon: 'text-purple-400',
+    logoAccent: 'text-fuchsia-400',
+    logoTag: 'bg-purple-900/60 border-purple-700/60 text-purple-200',
+    navActive: 'bg-purple-600 text-white shadow-sm',
+    navInactive: 'text-purple-100/70 hover:text-white hover:bg-purple-900/50',
+    primaryBtn: 'bg-purple-600 hover:bg-purple-700 active:bg-purple-800 text-white shadow-sm shadow-purple-500/25',
+    primaryBtnText: 'text-purple-600',
+    roleActiveAdmin: 'bg-purple-600 text-white shadow-sm',
+    roleActiveViewer: 'bg-fuchsia-600 text-white shadow-sm',
+    highlightText: 'text-purple-600 hover:text-purple-800',
+    hoverRow: 'hover:bg-purple-50/40',
+    totalCardBorder: 'border-l-purple-600',
+    totalCardText: 'text-purple-950',
+    totalCardSub: 'text-purple-600',
+    focusRing: 'focus:ring-purple-500',
+    bannerBg: 'bg-gradient-to-r from-[#140624] via-[#240a3e] to-[#390d63]',
+    bannerBorder: 'border-purple-800/80',
+    bannerAccent: 'text-fuchsia-400',
+    bannerBtn: 'bg-purple-600 hover:bg-purple-500 text-white'
+  },
+  crimson: {
+    id: 'crimson',
+    name: 'Crimson Surgical',
+    dotColor: 'bg-rose-500',
+    headerBg: 'bg-gradient-to-r from-[#1f080e] via-[#350c18] to-[#4e0d22]',
+    headerBorder: 'border-rose-500',
+    logoBg: 'bg-rose-500/20 text-rose-300 border-rose-400/40',
+    logoIcon: 'text-rose-400',
+    logoAccent: 'text-rose-400',
+    logoTag: 'bg-rose-900/60 border-rose-700/60 text-rose-200',
+    navActive: 'bg-rose-600 text-white shadow-sm',
+    navInactive: 'text-rose-100/70 hover:text-white hover:bg-rose-900/50',
+    primaryBtn: 'bg-rose-600 hover:bg-rose-700 active:bg-rose-800 text-white shadow-sm shadow-rose-500/25',
+    primaryBtnText: 'text-rose-600',
+    roleActiveAdmin: 'bg-rose-600 text-white shadow-sm',
+    roleActiveViewer: 'bg-amber-600 text-white shadow-sm',
+    highlightText: 'text-rose-600 hover:text-rose-800',
+    hoverRow: 'hover:bg-rose-50/40',
+    totalCardBorder: 'border-l-rose-600',
+    totalCardText: 'text-rose-950',
+    totalCardSub: 'text-rose-600',
+    focusRing: 'focus:ring-rose-500',
+    bannerBg: 'bg-gradient-to-r from-[#1f080e] via-[#350c18] to-[#4e0d22]',
+    bannerBorder: 'border-rose-800/80',
+    bannerAccent: 'text-rose-300',
+    bannerBtn: 'bg-rose-600 hover:bg-rose-500 text-white'
+  },
+  emerald: {
+    id: 'emerald',
+    name: 'Clinical Teal',
+    dotColor: 'bg-teal-500',
+    headerBg: 'bg-gradient-to-r from-teal-950 via-[#042f2e] to-emerald-950',
+    headerBorder: 'border-teal-500',
+    logoBg: 'bg-teal-500/20 text-emerald-300 border-teal-500/40',
+    logoIcon: 'text-emerald-400',
+    logoAccent: 'text-emerald-400',
+    logoTag: 'bg-teal-900/60 border-teal-700/50 text-teal-200',
+    navActive: 'bg-teal-700 text-white shadow-sm',
+    navInactive: 'text-teal-100/70 hover:text-white hover:bg-teal-900/60',
+    primaryBtn: 'bg-teal-700 hover:bg-teal-800 text-white shadow-sm shadow-teal-700/25',
+    primaryBtnText: 'text-teal-700',
+    roleActiveAdmin: 'bg-teal-700 text-white shadow-sm',
+    roleActiveViewer: 'bg-emerald-700 text-white shadow-sm',
+    highlightText: 'text-teal-700 hover:text-teal-900',
+    hoverRow: 'hover:bg-teal-50/30',
+    totalCardBorder: 'border-l-teal-700',
+    totalCardText: 'text-teal-950',
+    totalCardSub: 'text-teal-700',
+    focusRing: 'focus:ring-teal-600',
+    bannerBg: 'bg-gradient-to-r from-teal-950 via-[#042f2e] to-emerald-950',
+    bannerBorder: 'border-teal-800/80',
+    bannerAccent: 'text-emerald-400',
+    bannerBtn: 'bg-teal-700 hover:bg-teal-600 text-white'
+  }
+};
 
 // --- Type Definitions ---
 export type CaseStatus = 'Draft' | 'Planning' | 'In Review' | 'Approved' | 'Completed' | 'Cancelled';
@@ -404,6 +548,19 @@ export default function App() {
 
   const [currentUser, setCurrentUser] = useState<User | null>(ADMIN_USER);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'cases' | 'details' | 'form' | 'api' | 'tests' | 'docs'>('dashboard');
+
+  // Theme state (Royal Sapphire default)
+  const [theme, setTheme] = useState<ColorTheme>(() => {
+    const saved = localStorage.getItem('jajal_medical_theme');
+    return (saved as ColorTheme) || 'sapphire';
+  });
+  const themeConfig = THEMES[theme] || THEMES.sapphire;
+
+  const handleThemeChange = (newTheme: ColorTheme) => {
+    setTheme(newTheme);
+    localStorage.setItem('jajal_medical_theme', newTheme);
+    showToast(`Palette switched to ${THEMES[newTheme].name}.`, 'info');
+  };
 
   // Filter & Search states
   const [searchQuery, setSearchQuery] = useState('');
@@ -832,17 +989,17 @@ export default function App() {
   const getStatusBadge = (status: CaseStatus) => {
     switch (status) {
       case 'Planning':
-        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">Planning</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-800 border border-sky-200">Planning</span>;
       case 'In Review':
-        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">In Review</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">In Review</span>;
       case 'Approved':
-        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Approved</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-300">Approved</span>;
       case 'Completed':
-        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">Completed</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-900 border border-indigo-300">Completed</span>;
       case 'Cancelled':
-        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 border border-red-200">Cancelled</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200">Cancelled</span>;
       default:
-        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-300">Draft</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">Draft</span>;
     }
   };
 
@@ -850,26 +1007,26 @@ export default function App() {
   const getPriorityBadge = (priority: CasePriority) => {
     switch (priority) {
       case 'High':
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">High</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200">High</span>;
       case 'Medium':
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">Medium</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200">Medium</span>;
       default:
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">Low</span>;
+        return <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">Low</span>;
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50/70 text-slate-800 flex flex-col font-sans">
       {/* Toast Notification */}
       {toastMessage && (
         <div className={`fixed bottom-5 right-5 z-50 flex items-center gap-3 px-4 py-3 rounded-lg shadow-xl text-sm font-medium border transition-all ${
           toastMessage.type === 'success' ? 'bg-emerald-50 text-emerald-900 border-emerald-300' :
           toastMessage.type === 'error' ? 'bg-rose-50 text-rose-900 border-rose-300' :
-          'bg-sky-50 text-sky-900 border-sky-300'
+          'bg-blue-50 text-blue-900 border-blue-300'
         }`}>
           {toastMessage.type === 'success' && <CheckCircle2 className="w-5 h-5 text-emerald-600" />}
           {toastMessage.type === 'error' && <AlertCircle className="w-5 h-5 text-rose-600" />}
-          {toastMessage.type === 'info' && <Info className="w-5 h-5 text-sky-600" />}
+          {toastMessage.type === 'info' && <Info className="w-5 h-5 text-blue-600" />}
           <span>{toastMessage.text}</span>
           <button onClick={() => setToastMessage(null)} className="ml-2 text-slate-400 hover:text-slate-600">
             <X className="w-4 h-4" />
@@ -878,67 +1035,92 @@ export default function App() {
       )}
 
       {/* Top Header */}
-      <header className="bg-slate-900 border-b-2 border-sky-600 text-white sticky top-0 z-40 shadow-md">
+      <header className={`${themeConfig.headerBg} border-b-2 ${themeConfig.headerBorder} text-white sticky top-0 z-40 shadow-md transition-colors duration-200`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
-              <div className="w-9 h-9 rounded-lg bg-sky-500/20 text-sky-400 border border-sky-500/40 flex items-center justify-center font-bold">
-                <Activity className="w-5 h-5" />
+              <div className={`w-9 h-9 rounded-lg ${themeConfig.logoBg} flex items-center justify-center font-bold shadow-inner`}>
+                <Activity className={`w-5 h-5 ${themeConfig.logoIcon}`} />
               </div>
               <div>
-                <span className="font-bold tracking-tight text-lg text-white">JAJAL <span className="text-sky-400 font-light">MEDICAL</span></span>
-                <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider text-slate-400 ml-2 px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700">Case Management</span>
+                <span className="font-bold tracking-tight text-lg text-white">JAJAL <span className={`${themeConfig.logoAccent} font-light`}>MEDICAL</span></span>
+                <span className={`hidden sm:inline-block text-[10px] uppercase tracking-wider ml-2 px-1.5 py-0.5 rounded border ${themeConfig.logoTag}`}>Case Management</span>
               </div>
             </div>
 
             {/* Navigation Tabs */}
-            <nav className="hidden md:flex items-center gap-1 ml-6">
+            <nav className="hidden md:flex items-center gap-1 ml-4">
               <button
                 onClick={() => setActiveTab('dashboard')}
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'dashboard' ? 'bg-sky-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'dashboard' ? themeConfig.navActive : themeConfig.navInactive}`}
               >
                 Dashboard
               </button>
               <button
                 onClick={() => setActiveTab('cases')}
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'cases' ? 'bg-sky-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'cases' ? themeConfig.navActive : themeConfig.navInactive}`}
               >
                 Cases Directory
               </button>
               <button
                 onClick={() => setActiveTab('api')}
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'api' ? 'bg-sky-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'api' ? themeConfig.navActive : themeConfig.navInactive}`}
               >
                 Sanctum API
               </button>
               <button
                 onClick={() => setActiveTab('tests')}
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'tests' ? 'bg-sky-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'tests' ? themeConfig.navActive : themeConfig.navInactive}`}
               >
                 PHPUnit Tests
               </button>
               <button
                 onClick={() => setActiveTab('docs')}
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'docs' ? 'bg-sky-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'docs' ? themeConfig.navActive : themeConfig.navInactive}`}
               >
                 Docs & Architecture
               </button>
             </nav>
           </div>
 
-          {/* User Profile & Role Switcher */}
-          <div className="flex items-center gap-3">
+          {/* Palette Selector & User Profile & Role Switcher */}
+          <div className="flex items-center gap-2.5">
+            {/* Live Color Palette Selector */}
+            <div className="flex items-center bg-black/35 border border-white/10 rounded-lg p-0.5 text-xs">
+              <div className="flex items-center px-1.5 text-[11px] text-slate-300 gap-1 border-r border-white/10 mr-0.5">
+                <Palette className="w-3.5 h-3.5 text-slate-300" />
+                <span className="hidden lg:inline text-[10px] uppercase tracking-wider font-semibold text-slate-400">Color:</span>
+              </div>
+              {(Object.keys(THEMES) as ColorTheme[]).map((tKey) => {
+                const t = THEMES[tKey];
+                const isActive = theme === tKey;
+                return (
+                  <button
+                    key={tKey}
+                    onClick={() => handleThemeChange(tKey)}
+                    title={`Switch to ${t.name} color palette`}
+                    className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all ${
+                      isActive ? 'bg-white/20 text-white shadow-xs font-semibold' : 'text-slate-300 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <span className={`w-2 h-2 rounded-full ${t.dotColor}`} />
+                    <span className="hidden xl:inline text-[11px]">{t.name.split(' ')[0]}</span>
+                  </button>
+                );
+              })}
+            </div>
+
             {currentUser ? (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 {/* Instant Role Toggle Pill */}
-                <div className="flex items-center bg-slate-800 border border-slate-700 rounded-lg p-0.5 text-xs">
+                <div className="flex items-center bg-black/35 border border-white/10 rounded-lg p-0.5 text-xs">
                   <button
                     onClick={() => {
                       setCurrentUser(ADMIN_USER);
                       showToast('Switched session to Administrator (Full CRUD access).', 'info');
                     }}
                     className={`px-2.5 py-1 rounded-md font-medium transition-all flex items-center gap-1 ${
-                      currentUser.role === 'admin' ? 'bg-sky-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+                      currentUser.role === 'admin' ? themeConfig.roleActiveAdmin : 'text-slate-300 hover:text-white'
                     }`}
                   >
                     <Shield className="w-3.5 h-3.5" /> Admin
@@ -949,16 +1131,16 @@ export default function App() {
                       showToast('Switched session to Viewer (Read-only access).', 'info');
                     }}
                     className={`px-2.5 py-1 rounded-md font-medium transition-all flex items-center gap-1 ${
-                      currentUser.role === 'viewer' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+                      currentUser.role === 'viewer' ? themeConfig.roleActiveViewer : 'text-slate-300 hover:text-white'
                     }`}
                   >
                     <Eye className="w-3.5 h-3.5" /> Viewer
                   </button>
                 </div>
 
-                <div className="hidden lg:block text-right">
+                <div className="hidden 2xl:block text-right">
                   <div className="text-xs font-semibold text-white leading-tight">{currentUser.name}</div>
-                  <div className="text-[10px] text-slate-400 font-mono">{currentUser.email}</div>
+                  <div className="text-[10px] text-slate-300 font-mono">{currentUser.email}</div>
                 </div>
 
                 <button
@@ -966,7 +1148,7 @@ export default function App() {
                     setCurrentUser(null);
                     showToast('Logged out of system.', 'info');
                   }}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition-colors"
+                  className="p-1.5 rounded-lg text-slate-300 hover:text-rose-400 hover:bg-white/10 transition-colors"
                   title="Logout"
                 >
                   <LogOut className="w-4 h-4" />
@@ -976,13 +1158,13 @@ export default function App() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setCurrentUser(ADMIN_USER)}
-                  className="text-xs px-3 py-1.5 rounded bg-sky-600 hover:bg-sky-500 text-white font-medium"
+                  className={`text-xs px-3 py-1.5 rounded ${themeConfig.primaryBtn}`}
                 >
                   Sign In as Admin
                 </button>
                 <button
                   onClick={() => setCurrentUser(VIEWER_USER)}
-                  className="text-xs px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium"
+                  className="text-xs px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium"
                 >
                   Sign In as Viewer
                 </button>
@@ -992,12 +1174,12 @@ export default function App() {
         </div>
 
         {/* Mobile Nav */}
-        <div className="md:hidden border-t border-slate-800 px-4 py-2 flex items-center justify-between text-xs overflow-x-auto gap-2">
-          <button onClick={() => setActiveTab('dashboard')} className={`px-2.5 py-1 rounded ${activeTab === 'dashboard' ? 'bg-sky-600 text-white' : 'text-slate-400'}`}>Dashboard</button>
-          <button onClick={() => setActiveTab('cases')} className={`px-2.5 py-1 rounded ${activeTab === 'cases' ? 'bg-sky-600 text-white' : 'text-slate-400'}`}>Cases</button>
-          <button onClick={() => setActiveTab('api')} className={`px-2.5 py-1 rounded ${activeTab === 'api' ? 'bg-sky-600 text-white' : 'text-slate-400'}`}>API</button>
-          <button onClick={() => setActiveTab('tests')} className={`px-2.5 py-1 rounded ${activeTab === 'tests' ? 'bg-sky-600 text-white' : 'text-slate-400'}`}>Tests</button>
-          <button onClick={() => setActiveTab('docs')} className={`px-2.5 py-1 rounded ${activeTab === 'docs' ? 'bg-sky-600 text-white' : 'text-slate-400'}`}>Docs</button>
+        <div className={`md:hidden border-t border-white/10 px-4 py-2 flex items-center justify-between text-xs overflow-x-auto gap-2 ${themeConfig.headerBg}`}>
+          <button onClick={() => setActiveTab('dashboard')} className={`px-2.5 py-1 rounded ${activeTab === 'dashboard' ? themeConfig.navActive : 'text-white/70'}`}>Dashboard</button>
+          <button onClick={() => setActiveTab('cases')} className={`px-2.5 py-1 rounded ${activeTab === 'cases' ? themeConfig.navActive : 'text-white/70'}`}>Cases</button>
+          <button onClick={() => setActiveTab('api')} className={`px-2.5 py-1 rounded ${activeTab === 'api' ? themeConfig.navActive : 'text-white/70'}`}>API</button>
+          <button onClick={() => setActiveTab('tests')} className={`px-2.5 py-1 rounded ${activeTab === 'tests' ? themeConfig.navActive : 'text-white/70'}`}>Tests</button>
+          <button onClick={() => setActiveTab('docs')} className={`px-2.5 py-1 rounded ${activeTab === 'docs' ? themeConfig.navActive : 'text-white/70'}`}>Docs</button>
         </div>
       </header>
 
@@ -1006,15 +1188,15 @@ export default function App() {
         {/* Unauthenticated Wall */}
         {!currentUser ? (
           <div className="max-w-md mx-auto my-12 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
-            <div className="p-6 text-center bg-slate-50 border-b border-slate-200">
-              <div className="w-12 h-12 mx-auto rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mb-3">
-                <Lock className="w-6 h-6" />
+            <div className={`p-6 text-center ${themeConfig.headerBg} text-white border-b ${themeConfig.headerBorder}`}>
+              <div className={`w-12 h-12 mx-auto rounded-full ${themeConfig.logoBg} flex items-center justify-center mb-3 shadow-inner`}>
+                <Lock className={`w-6 h-6 ${themeConfig.logoIcon}`} />
               </div>
-              <h2 className="text-xl font-bold text-slate-900">Sign In to Jajal Medical</h2>
-              <p className="text-sm text-slate-500 mt-1">Implant Procedure Tracking Portal</p>
+              <h2 className="text-xl font-bold text-white tracking-tight">Sign In to Jajal Medical</h2>
+              <p className="text-xs text-slate-300 mt-1">Implant Procedure Tracking Portal</p>
             </div>
             <div className="p-6 space-y-4">
-              <div className="bg-sky-50 text-sky-800 p-3 rounded-lg text-xs border border-sky-200">
+              <div className="bg-slate-50 text-slate-800 p-3 rounded-lg text-xs border border-slate-200">
                 <strong>Internship Demo Access:</strong> Choose one of the seeded accounts below to test role permissions immediately.
               </div>
               <button
@@ -1022,15 +1204,15 @@ export default function App() {
                   setCurrentUser(ADMIN_USER);
                   showToast('Logged in as Administrator.', 'success');
                 }}
-                className="w-full flex items-center justify-between p-3 rounded-lg border border-sky-300 bg-sky-50/50 hover:bg-sky-100/70 transition-colors text-left"
+                className="w-full flex items-center justify-between p-3 rounded-lg border border-slate-300 hover:bg-slate-50 transition-colors text-left"
               >
                 <div>
                   <div className="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
-                    <Shield className="w-4 h-4 text-sky-600" /> Admin Account
+                    <Shield className={`w-4 h-4 ${themeConfig.primaryBtnText}`} /> Admin Account
                   </div>
                   <div className="text-xs text-slate-500 font-mono mt-0.5">admin@jajalmedical.com / Admin@12345</div>
                 </div>
-                <span className="text-xs bg-sky-600 text-white px-2 py-1 rounded font-medium">Select</span>
+                <span className={`text-xs px-2.5 py-1 rounded font-medium ${themeConfig.primaryBtn}`}>Select</span>
               </button>
 
               <button
@@ -1042,11 +1224,11 @@ export default function App() {
               >
                 <div>
                   <div className="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
-                    <Eye className="w-4 h-4 text-emerald-600" /> Viewer Account
+                    <Eye className="w-4 h-4 text-slate-600" /> Viewer Account
                   </div>
                   <div className="text-xs text-slate-500 font-mono mt-0.5">viewer@jajalmedical.com / Viewer@12345</div>
                 </div>
-                <span className="text-xs bg-slate-700 text-white px-2 py-1 rounded font-medium">Select</span>
+                <span className="text-xs bg-slate-700 hover:bg-slate-800 text-white px-2.5 py-1 rounded font-medium">Select</span>
               </button>
             </div>
           </div>
@@ -1065,7 +1247,7 @@ export default function App() {
                     {currentUser.role === 'admin' && (
                       <button
                         onClick={openCreateForm}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold shadow-sm transition-colors"
+                        className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors ${themeConfig.primaryBtn}`}
                       >
                         <Plus className="w-4 h-4" /> Register New Case
                       </button>
@@ -1083,56 +1265,56 @@ export default function App() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                   <div
                     onClick={() => { setStatusFilter(''); setActiveTab('cases'); }}
-                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-sky-600 shadow-sm hover:shadow cursor-pointer transition-all"
+                    className={`bg-white p-4 rounded-xl border border-slate-200 border-l-4 ${themeConfig.totalCardBorder} shadow-sm hover:shadow cursor-pointer transition-all hover:-translate-y-0.5`}
                   >
-                    <div className="text-xs font-semibold text-slate-500 uppercase">Total Cases</div>
-                    <div className="text-2xl font-bold text-slate-900 mt-1">{stats.total}</div>
-                    <div className="text-[11px] text-sky-600 font-medium mt-1">Full database &rarr;</div>
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Cases</div>
+                    <div className={`text-2xl font-bold ${themeConfig.totalCardText} mt-1`}>{stats.total}</div>
+                    <div className={`text-[11px] ${themeConfig.totalCardSub} font-semibold mt-1`}>Full database &rarr;</div>
                   </div>
 
                   <div
                     onClick={() => { setStatusFilter('Planning'); setActiveTab('cases'); }}
-                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-blue-500 shadow-sm hover:shadow cursor-pointer transition-all"
+                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-sky-500 shadow-sm hover:shadow cursor-pointer transition-all hover:-translate-y-0.5"
                   >
-                    <div className="text-xs font-semibold text-slate-500 uppercase">Planning</div>
-                    <div className="text-2xl font-bold text-blue-600 mt-1">{stats.planning}</div>
-                    <div className="text-[11px] text-blue-600 font-medium mt-1">Filter list &rarr;</div>
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Planning</div>
+                    <div className="text-2xl font-bold text-sky-900 mt-1">{stats.planning}</div>
+                    <div className="text-[11px] text-sky-600 font-semibold mt-1">Filter list &rarr;</div>
                   </div>
 
                   <div
                     onClick={() => { setStatusFilter('In Review'); setActiveTab('cases'); }}
-                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-amber-500 shadow-sm hover:shadow cursor-pointer transition-all"
+                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-amber-500 shadow-sm hover:shadow cursor-pointer transition-all hover:-translate-y-0.5"
                   >
-                    <div className="text-xs font-semibold text-slate-500 uppercase">In Review</div>
-                    <div className="text-2xl font-bold text-amber-600 mt-1">{stats.inReview}</div>
-                    <div className="text-[11px] text-amber-600 font-medium mt-1">Filter list &rarr;</div>
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">In Review</div>
+                    <div className="text-2xl font-bold text-amber-900 mt-1">{stats.inReview}</div>
+                    <div className="text-[11px] text-amber-600 font-semibold mt-1">Filter list &rarr;</div>
                   </div>
 
                   <div
                     onClick={() => { setStatusFilter('Approved'); setActiveTab('cases'); }}
-                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-emerald-500 shadow-sm hover:shadow cursor-pointer transition-all"
+                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-emerald-600 shadow-sm hover:shadow cursor-pointer transition-all hover:-translate-y-0.5"
                   >
-                    <div className="text-xs font-semibold text-slate-500 uppercase">Approved</div>
-                    <div className="text-2xl font-bold text-emerald-600 mt-1">{stats.approved}</div>
-                    <div className="text-[11px] text-emerald-600 font-medium mt-1">Filter list &rarr;</div>
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Approved</div>
+                    <div className="text-2xl font-bold text-emerald-900 mt-1">{stats.approved}</div>
+                    <div className="text-[11px] text-emerald-600 font-semibold mt-1">Filter list &rarr;</div>
                   </div>
 
                   <div
                     onClick={() => { setStatusFilter('Completed'); setActiveTab('cases'); }}
-                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-green-600 shadow-sm hover:shadow cursor-pointer transition-all"
+                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-indigo-600 shadow-sm hover:shadow cursor-pointer transition-all hover:-translate-y-0.5"
                   >
-                    <div className="text-xs font-semibold text-slate-500 uppercase">Completed</div>
-                    <div className="text-2xl font-bold text-green-700 mt-1">{stats.completed}</div>
-                    <div className="text-[11px] text-green-700 font-medium mt-1">Filter list &rarr;</div>
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Completed</div>
+                    <div className="text-2xl font-bold text-indigo-900 mt-1">{stats.completed}</div>
+                    <div className="text-[11px] text-indigo-600 font-semibold mt-1">Filter list &rarr;</div>
                   </div>
 
                   <div
                     onClick={() => { setStatusFilter('Draft'); setActiveTab('cases'); }}
-                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-slate-400 shadow-sm hover:shadow cursor-pointer transition-all"
+                    className="bg-white p-4 rounded-xl border border-slate-200 border-l-4 border-l-slate-400 shadow-sm hover:shadow cursor-pointer transition-all hover:-translate-y-0.5"
                   >
-                    <div className="text-xs font-semibold text-slate-500 uppercase">Drafts</div>
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Drafts</div>
                     <div className="text-2xl font-bold text-slate-700 mt-1">{stats.draft}</div>
-                    <div className="text-[11px] text-slate-600 font-medium mt-1">Filter list &rarr;</div>
+                    <div className="text-[11px] text-slate-500 font-semibold mt-1">Filter list &rarr;</div>
                   </div>
                 </div>
 
@@ -1141,13 +1323,13 @@ export default function App() {
                   <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
                     <div>
                       <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-sky-600" /> Recent Case Activity
+                        <Clock className={`w-4 h-4 ${themeConfig.primaryBtnText}`} /> Recent Case Activity
                       </h2>
                       <p className="text-xs text-slate-500">Most recently registered implants</p>
                     </div>
                     <button
                       onClick={() => setActiveTab('cases')}
-                      className="text-xs font-semibold text-sky-600 hover:text-sky-700"
+                      className={`text-xs font-semibold ${themeConfig.highlightText}`}
                     >
                       View All {cases.length} Records &rarr;
                     </button>
@@ -1169,11 +1351,11 @@ export default function App() {
                       </thead>
                       <tbody className="divide-y divide-slate-100">
                         {cases.slice(0, 6).map(c => (
-                          <tr key={c.id} className="hover:bg-slate-50/80 transition-colors">
-                            <td className="py-3 px-4 font-semibold text-sky-600 font-mono">
+                          <tr key={c.id} className={`${themeConfig.hoverRow} transition-colors`}>
+                            <td className="py-3 px-4 font-semibold font-mono">
                               <button
                                 onClick={() => { setSelectedCaseId(c.id); setActiveTab('details'); }}
-                                className="hover:underline"
+                                className={`hover:underline font-bold ${themeConfig.highlightText}`}
                               >
                                 {c.case_number}
                               </button>
@@ -1191,7 +1373,7 @@ export default function App() {
                             <td className="py-3 px-4 text-right">
                               <button
                                 onClick={() => { setSelectedCaseId(c.id); setActiveTab('details'); }}
-                                className="text-xs px-2.5 py-1 rounded border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 font-medium"
+                                className="text-xs px-2.5 py-1 rounded border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-medium"
                               >
                                 View Details
                               </button>
@@ -1204,24 +1386,24 @@ export default function App() {
                 </div>
 
                 {/* Practical Assignment Info Callout */}
-                <div className="bg-slate-900 text-slate-300 p-5 rounded-xl border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className={`${themeConfig.bannerBg} text-slate-100 p-5 rounded-xl border ${themeConfig.bannerBorder} flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm`}>
                   <div className="space-y-1">
-                    <span className="text-xs uppercase tracking-wider font-semibold text-sky-400">Jajal Medical Practical Assignment Verification</span>
+                    <span className={`text-xs uppercase tracking-wider font-semibold ${themeConfig.bannerAccent}`}>Jajal Medical Practical Assignment Verification</span>
                     <h3 className="text-base font-bold text-white">Full Stack Architecture Ready</h3>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-slate-300">
                       Laravel 11 models, migrations, seeders, policies, controllers, Blade views, Sanctum REST API endpoints, and PHPUnit feature tests are written in project root.
                     </p>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => setActiveTab('tests')}
-                      className="text-xs px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold flex items-center gap-1.5"
+                      className={`text-xs px-3.5 py-2 rounded-lg font-semibold flex items-center gap-1.5 shadow-sm ${themeConfig.bannerBtn}`}
                     >
                       <Play className="w-3.5 h-3.5" /> Run 8 Feature Tests
                     </button>
                     <button
                       onClick={() => setActiveTab('api')}
-                      className="text-xs px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium flex items-center gap-1.5"
+                      className="text-xs px-3.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium flex items-center gap-1.5 transition-colors"
                     >
                       <Server className="w-3.5 h-3.5" /> Test Sanctum API
                     </button>
@@ -1243,7 +1425,7 @@ export default function App() {
                     {currentUser.role === 'admin' ? (
                       <button
                         onClick={openCreateForm}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold shadow-sm transition-colors"
+                        className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors ${themeConfig.primaryBtn}`}
                       >
                         <Plus className="w-4 h-4" /> Register New Case
                       </button>
@@ -1271,7 +1453,7 @@ export default function App() {
                       value={searchQuery}
                       onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
                       placeholder="Search Case Number or Surgeon Name..."
-                      className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className={`w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     />
                     {searchQuery && (
                       <button onClick={() => setSearchQuery('')} className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600">
@@ -1285,7 +1467,7 @@ export default function App() {
                     <select
                       value={statusFilter}
                       onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
-                      className="text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className={`text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     >
                       <option value="">All Statuses</option>
                       <option value="Draft">Draft</option>
@@ -1300,7 +1482,7 @@ export default function App() {
                     <select
                       value={priorityFilter}
                       onChange={(e) => { setPriorityFilter(e.target.value); setCurrentPage(1); }}
-                      className="text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className={`text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     >
                       <option value="">All Priorities</option>
                       <option value="Low">Low Priority</option>
@@ -1347,11 +1529,11 @@ export default function App() {
                       <tbody className="divide-y divide-slate-100">
                         {paginatedCases.length > 0 ? (
                           paginatedCases.map(c => (
-                            <tr key={c.id} className="hover:bg-slate-50/80 transition-colors">
-                              <td className="py-3 px-4 font-semibold text-sky-600 font-mono">
+                            <tr key={c.id} className={`${themeConfig.hoverRow} transition-colors`}>
+                              <td className="py-3 px-4 font-semibold font-mono">
                                 <button
                                   onClick={() => { setSelectedCaseId(c.id); setActiveTab('details'); }}
-                                  className="hover:underline"
+                                  className={`hover:underline font-bold ${themeConfig.highlightText}`}
                                 >
                                   {c.case_number}
                                 </button>
@@ -1383,7 +1565,7 @@ export default function App() {
                                     <>
                                       <button
                                         onClick={() => openEditForm(c)}
-                                        className="p-1.5 rounded hover:bg-sky-50 text-slate-600 hover:text-sky-600"
+                                        className={`p-1.5 rounded hover:bg-slate-100 text-slate-600 hover:${themeConfig.primaryBtnText}`}
                                         title="Edit Case"
                                       >
                                         <Edit3 className="w-4 h-4" />
@@ -1417,7 +1599,7 @@ export default function App() {
                               <p className="text-xs text-slate-400 mt-1">Try resetting the search keyword or status filter.</p>
                               <button
                                 onClick={() => { setSearchQuery(''); setStatusFilter(''); setPriorityFilter(''); }}
-                                className="mt-3 text-xs px-3 py-1.5 rounded bg-sky-50 text-sky-600 font-medium hover:bg-sky-100"
+                                className={`mt-3 text-xs px-3.5 py-1.5 rounded font-medium ${themeConfig.primaryBtn}`}
                               >
                                 Clear all filters
                               </button>
@@ -1447,7 +1629,7 @@ export default function App() {
                           key={page}
                           onClick={() => setCurrentPage(page)}
                           className={`w-7 h-7 rounded text-xs font-semibold ${
-                            currentPage === page ? 'bg-sky-600 text-white' : 'border border-slate-300 bg-white hover:bg-slate-50 text-slate-700'
+                            currentPage === page ? themeConfig.primaryBtn : 'border border-slate-300 bg-white hover:bg-slate-50 text-slate-700'
                           }`}
                         >
                           {page}
@@ -1491,7 +1673,7 @@ export default function App() {
                       <>
                         <button
                           onClick={() => openEditForm(selectedCase)}
-                          className="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold flex items-center gap-1.5"
+                          className={`px-3.5 py-1.5 rounded-lg text-white text-xs font-semibold flex items-center gap-1.5 ${themeConfig.primaryBtn}`}
                         >
                           <Edit3 className="w-3.5 h-3.5" /> Edit Case
                         </button>
@@ -1512,7 +1694,7 @@ export default function App() {
                   {/* Surgical & Device Specifications */}
                   <div className="md:col-span-2 bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-5">
                     <h2 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-                      <Activity className="w-4 h-4 text-sky-600" /> Surgical & Implant Specifications
+                      <Activity className={`w-4 h-4 ${themeConfig.primaryBtnText}`} /> Surgical & Implant Specifications
                     </h2>
 
                     <div className="grid grid-cols-2 gap-4 text-sm">
@@ -1554,7 +1736,7 @@ export default function App() {
                       <div className="col-span-2">
                         <div className="text-xs font-semibold text-slate-500 uppercase">Planned Surgery Date</div>
                         <div className="text-sm font-medium text-slate-800 mt-1 flex items-center gap-1.5">
-                          <Calendar className="w-4 h-4 text-sky-600" />
+                          <Calendar className={`w-4 h-4 ${themeConfig.primaryBtnText}`} />
                           {selectedCase.surgery_date ? (
                             new Date(selectedCase.surgery_date).toLocaleDateString('en-US', {
                               weekday: 'long',
@@ -1571,15 +1753,15 @@ export default function App() {
 
                     {/* Nearby Public Holidays Grounding (Bonus 3) */}
                     {selectedCase.surgery_date && (
-                      <div className="mt-6 p-4 rounded-xl border border-sky-200 bg-sky-50/50 space-y-2">
-                        <div className="flex items-center gap-2 text-xs font-bold text-sky-900">
-                          <Calendar className="w-4 h-4 text-sky-600" />
+                      <div className="mt-6 p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
+                          <Calendar className={`w-4 h-4 ${themeConfig.primaryBtnText}`} />
                           <span>Nearby Regional Public Holidays (Nager.Date API)</span>
                         </div>
                         <p className="text-xs text-slate-600">
                           Automated holiday check near surgery date ({selectedCase.surgery_date}):
                         </p>
-                        <div className="text-xs text-slate-700 bg-white p-2.5 rounded-lg border border-sky-100 flex items-center justify-between">
+                        <div className="text-xs text-slate-700 bg-white p-2.5 rounded-lg border border-slate-200 flex items-center justify-between">
                           <span><strong>Thanksgiving / Veterans Day Window</strong></span>
                           <span className="text-slate-500 font-mono text-[11px]">No critical facility holiday closures found within 48h</span>
                         </div>
@@ -1657,7 +1839,7 @@ export default function App() {
                       placeholder="e.g. CASE-0042"
                       className={`w-full px-3 py-2 text-sm rounded-lg border ${
                         formErrors.case_number ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
-                      } focus:outline-none focus:ring-2 focus:ring-sky-500`}
+                      } focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     />
                     {formErrors.case_number ? (
                       <p className="text-xs text-rose-600 mt-1">{formErrors.case_number}</p>
@@ -1675,7 +1857,7 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setFormData({ ...formData, patient_reference: `REF-${Math.floor(10000 + Math.random() * 90000)}` })}
-                        className="text-[11px] text-sky-600 hover:underline"
+                        className={`text-[11px] font-medium hover:underline ${themeConfig.highlightText}`}
                       >
                         Generate random token
                       </button>
@@ -1687,7 +1869,7 @@ export default function App() {
                       placeholder="e.g. REF-84920"
                       className={`w-full px-3 py-2 text-sm rounded-lg border ${
                         formErrors.patient_reference ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
-                      } focus:outline-none focus:ring-2 focus:ring-sky-500`}
+                      } focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     />
                     <p className="text-[11px] text-slate-400 mt-1">Privacy rule: Never enter real patient names or SSNs.</p>
                   </div>
@@ -1704,7 +1886,7 @@ export default function App() {
                       placeholder="e.g. Dr. Marcus Vance, MD"
                       className={`w-full px-3 py-2 text-sm rounded-lg border ${
                         formErrors.surgeon_name ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
-                      } focus:outline-none focus:ring-2 focus:ring-sky-500`}
+                      } focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     />
                     {formErrors.surgeon_name && (
                       <p className="text-xs text-rose-600 mt-1">{formErrors.surgeon_name}</p>
@@ -1723,7 +1905,7 @@ export default function App() {
                       placeholder="e.g. Bicruciate-Retaining Total Knee System"
                       className={`w-full px-3 py-2 text-sm rounded-lg border ${
                         formErrors.implant_type ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300'
-                      } focus:outline-none focus:ring-2 focus:ring-sky-500`}
+                      } focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     />
                     {formErrors.implant_type && (
                       <p className="text-xs text-rose-600 mt-1">{formErrors.implant_type}</p>
@@ -1739,7 +1921,7 @@ export default function App() {
                       <select
                         value={formData.status}
                         onChange={(e) => setFormData({ ...formData, status: e.target.value as CaseStatus })}
-                        className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className={`w-full px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                       >
                         <option value="Draft">Draft</option>
                         <option value="Planning">Planning</option>
@@ -1757,7 +1939,7 @@ export default function App() {
                       <select
                         value={formData.priority}
                         onChange={(e) => setFormData({ ...formData, priority: e.target.value as CasePriority })}
-                        className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className={`w-full px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                       >
                         <option value="Low">Low Priority</option>
                         <option value="Medium">Medium Priority</option>
@@ -1775,7 +1957,7 @@ export default function App() {
                       type="date"
                       value={formData.surgery_date}
                       onChange={(e) => setFormData({ ...formData, surgery_date: e.target.value })}
-                      className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className={`w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     />
                     <p className="text-[11px] text-slate-400 mt-1">Leave empty if surgical date is unconfirmed.</p>
                   </div>
@@ -1797,7 +1979,7 @@ export default function App() {
                     </button>
                     <button
                       type="submit"
-                      className="px-5 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold shadow-sm transition-colors"
+                      className={`px-5 py-2 rounded-lg text-white text-sm font-semibold shadow-sm transition-colors ${themeConfig.primaryBtn}`}
                     >
                       {editingCase ? 'Update Medical Case' : 'Create Case Record'}
                     </button>
@@ -1812,7 +1994,7 @@ export default function App() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-slate-200">
                   <div>
                     <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                      <Server className="w-6 h-6 text-sky-600" /> Laravel Sanctum REST API Console
+                      <Server className={`w-6 h-6 ${themeConfig.primaryBtnText}`} /> Laravel Sanctum REST API Console
                     </h1>
                     <p className="text-sm text-slate-500">Interactive testing for authenticated REST endpoints</p>
                   </div>
@@ -1844,12 +2026,12 @@ export default function App() {
                       value={apiEndpoint}
                       onChange={(e) => setApiEndpoint(e.target.value)}
                       placeholder="/api/cases"
-                      className="flex-1 font-mono text-sm border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className={`flex-1 font-mono text-sm border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                     />
 
                     <button
                       onClick={executeApiRequest}
-                      className="w-full md:w-auto px-5 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-sm"
+                      className={`w-full md:w-auto px-5 py-2 rounded-lg text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-sm ${themeConfig.primaryBtn}`}
                     >
                       <Play className="w-4 h-4" /> Send Request
                     </button>
@@ -1898,7 +2080,7 @@ export default function App() {
                         value={apiPayload}
                         onChange={(e) => setApiPayload(e.target.value)}
                         rows={6}
-                        className="w-full font-mono text-xs p-3 rounded-lg border border-slate-300 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        className={`w-full font-mono text-xs p-3 rounded-lg border border-slate-300 bg-slate-50 focus:outline-none focus:ring-2 ${themeConfig.focusRing}`}
                       />
                     </div>
                   )}
@@ -1942,13 +2124,13 @@ export default function App() {
                       </thead>
                       <tbody className="divide-y divide-slate-100 font-mono">
                         <tr>
-                          <td className="py-2 font-bold text-sky-600">POST</td>
+                          <td className={`py-2 font-bold ${themeConfig.primaryBtnText}`}>POST</td>
                           <td className="py-2">/api/login</td>
                           <td className="py-2 text-slate-600 font-sans">Public</td>
                           <td className="py-2 text-slate-600 font-sans">200 with Bearer Token</td>
                         </tr>
                         <tr>
-                          <td className="py-2 font-bold text-sky-600">POST</td>
+                          <td className={`py-2 font-bold ${themeConfig.primaryBtnText}`}>POST</td>
                           <td className="py-2">/api/logout</td>
                           <td className="py-2 text-slate-600 font-sans">Authenticated</td>
                           <td className="py-2 text-slate-600 font-sans">200 Revokes access token</td>
@@ -1996,13 +2178,13 @@ export default function App() {
                 <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                   <div>
                     <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                      <Terminal className="w-6 h-6 text-sky-600" /> Automated PHPUnit Feature Tests
+                      <Terminal className={`w-6 h-6 ${themeConfig.primaryBtnText}`} /> Automated PHPUnit Feature Tests
                     </h1>
                     <p className="text-sm text-slate-500">Live verification of the required 6+ test cases using isolated in-memory SQLite</p>
                   </div>
                   <button
                     onClick={runAllTests}
-                    className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold flex items-center gap-2 shadow-sm"
+                    className={`px-4 py-2 rounded-lg text-white text-sm font-semibold flex items-center gap-2 shadow-sm ${themeConfig.primaryBtn}`}
                   >
                     <Play className="w-4 h-4" /> Run Test Suite
                   </button>
@@ -2035,7 +2217,7 @@ export default function App() {
                             </span>
                           )}
                           {t.status === 'running' && (
-                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-sky-100 text-sky-800 animate-pulse">
+                            <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 animate-pulse`}>
                               RUNNING
                             </span>
                           )}
@@ -2053,7 +2235,7 @@ export default function App() {
                     <span className="text-slate-500">Command in terminal: <code className="bg-white px-2 py-0.5 rounded border">php artisan test</code></span>
                     <button
                       onClick={runAllTests}
-                      className="text-sky-600 font-semibold hover:underline"
+                      className={`font-semibold hover:underline ${themeConfig.highlightText}`}
                     >
                       Re-run all assertions &rarr;
                     </button>
@@ -2067,7 +2249,7 @@ export default function App() {
               <div className="space-y-6 max-w-4xl mx-auto">
                 <div className="pb-3 border-b border-slate-200">
                   <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                    <Database className="w-6 h-6 text-sky-600" /> Database Architecture & Traceability
+                    <Database className={`w-6 h-6 ${themeConfig.primaryBtnText}`} /> Database Architecture & Traceability
                   </h1>
                   <p className="text-sm text-slate-500">Entity Relationship specifications and requirements traceability</p>
                 </div>
@@ -2075,7 +2257,7 @@ export default function App() {
                 {/* ER Diagram Card */}
                 <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
                   <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                    <Database className="w-4 h-4 text-sky-600" /> Text-Based ER Diagram
+                    <Database className={`w-4 h-4 ${themeConfig.primaryBtnText}`} /> Text-Based ER Diagram
                   </h3>
 
                   <pre className="bg-slate-900 text-slate-200 p-4 rounded-xl text-xs font-mono leading-relaxed overflow-x-auto">
@@ -2131,21 +2313,21 @@ export default function App() {
                       </thead>
                       <tbody className="divide-y divide-slate-100">
                         <tr>
-                          <td className="py-2.5 px-3 font-bold font-mono text-sky-600">REQ-001</td>
+                          <td className={`py-2.5 px-3 font-bold font-mono ${themeConfig.primaryBtnText}`}>REQ-001</td>
                           <td className="py-2.5 px-3 font-medium text-slate-900">Admin can create a case with auto created_by</td>
                           <td className="py-2.5 px-3 font-mono text-slate-600">CaseController.php @store</td>
                           <td className="py-2.5 px-3 font-mono text-slate-600">CaseManagementTest::test_admin_can_create_a_case</td>
                           <td className="py-2.5 px-3 text-right"><span className="text-emerald-700 font-bold">VERIFIED</span></td>
                         </tr>
                         <tr>
-                          <td className="py-2.5 px-3 font-bold font-mono text-sky-600">REQ-002</td>
+                          <td className={`py-2.5 px-3 font-bold font-mono ${themeConfig.primaryBtnText}`}>REQ-002</td>
                           <td className="py-2.5 px-3 font-medium text-slate-900">Case Number must be unique</td>
                           <td className="py-2.5 px-3 font-mono text-slate-600">StoreCaseRequest.php ('unique:cases')</td>
                           <td className="py-2.5 px-3 font-mono text-slate-600">ApiCaseTest::test_duplicate_case_number_fails_with_422</td>
                           <td className="py-2.5 px-3 text-right"><span className="text-emerald-700 font-bold">VERIFIED</span></td>
                         </tr>
                         <tr>
-                          <td className="py-2.5 px-3 font-bold font-mono text-sky-600">REQ-003</td>
+                          <td className={`py-2.5 px-3 font-bold font-mono ${themeConfig.primaryBtnText}`}>REQ-003</td>
                           <td className="py-2.5 px-3 font-medium text-slate-900">Only Admin can delete (Viewer receives 403)</td>
                           <td className="py-2.5 px-3 font-mono text-slate-600">MedicalCasePolicy.php @delete</td>
                           <td className="py-2.5 px-3 font-mono text-slate-600">CaseManagementTest::test_viewer_cannot_delete_403</td>
