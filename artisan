@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+// Register Composer Autoloader
+if (file_exists($maintenance = __DIR__.'/storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require __DIR__.'/vendor/autoload.php';
+    $app = require_once __DIR__.'/bootstrap/app.php';
+    $status = $app->handleCommand(new ArgvInput);
+    exit($status);
+} else {
+    echo "========================================================\n";
+    echo "  Jajal Medical Case Management System CLI Runner\n";
+    echo "========================================================\n";
+    echo "Composer dependencies are not yet installed locally.\n";
+    echo "To initialize full Laravel dependencies, run:\n";
+    echo "    composer install\n";
+    echo "    cp .env.example .env\n";
+    echo "    php artisan key:generate\n";
+    echo "    php artisan migrate --seed\n";
+    echo "========================================================\n";
+    exit(0);
+}
